@@ -1,0 +1,16 @@
+pipeline{
+  agent{label 'Main'}
+  stages{
+    stage("SCM Chkout-1"){
+      steps{
+        git branch: 'main', credentialsId: 'host1', url: 'https://github.com/Salviyah1/java_proj.git'
+      }
+    }
+    stage("Java execute"){
+      steps{
+        sh '''javac *.java
+java simple'''
+      }
+    }
+  }
+}
